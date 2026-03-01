@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NavAppRoutes | The Crowdfunding Revolution</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
         tailwind.config = {
@@ -53,7 +50,6 @@
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
         }
-        /* Custom Range Slider */
         input[type=range] {
             -webkit-appearance: none;
             width: 100%;
@@ -77,7 +73,6 @@
             border-radius: 4px;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        /* Checkout Modal Animation */
         .modal-enter {
             animation: modalFadeIn 0.3s ease-out forwards;
         }
@@ -89,7 +84,6 @@
 </head>
 <body class="antialiased selection:bg-navgreen selection:text-black relative">
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-panel border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -110,9 +104,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <div class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background elements -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
             <div class="absolute top-20 left-10 w-72 h-72 bg-navblue/20 rounded-full blur-[100px]"></div>
             <div class="absolute bottom-20 right-10 w-96 h-96 bg-navgreen/10 rounded-full blur-[120px]"></div>
@@ -130,7 +122,6 @@
                 The world's first patent-pending HGV navigation app with dynamic Section Control tracking. Save £52,000 annually. Keep your hard-earned money.
             </p>
             
-            <!-- AUTOMATED Early Access Progress Tracker -->
             <div class="max-w-3xl mx-auto glass-panel rounded-2xl p-8 mb-12 border border-navblue/30 relative overflow-hidden group">
                 <div class="absolute inset-0 bg-navblue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div class="absolute top-0 right-0 bg-navblue text-black text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide">
@@ -139,8 +130,7 @@
                 
                 <div class="flex justify-between text-left mb-4 relative z-10">
                     <div>
-                        <p class="text-gray-400 text-sm uppercase tracking-wider mb-1">Founder Spots Filled</p>
-                        <!-- ID added for JS automation -->
+                        <p class="text-gray-400 text-sm uppercase tracking-wider mb-1">Co-Founder Spots Filled</p>
                         <p class="text-3xl md:text-4xl font-bold text-white"><span id="trackerFilled">0</span> <span class="text-lg text-gray-400 font-normal tracking-normal">Drivers Onboard</span></p>
                     </div>
                     <div class="text-right">
@@ -150,27 +140,24 @@
                 </div>
                 
                 <div class="w-full bg-gray-800 rounded-full h-4 mb-4 relative z-10 shadow-inner overflow-hidden">
-                    <!-- ID added for JS automation -->
                     <div id="trackerBar" class="bg-gradient-to-r from-navblue to-navgreen h-4 rounded-full relative transition-all duration-1000 ease-out" style="width: 0%">
                         <div class="absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
                     </div>
                 </div>
                 
                 <div class="flex justify-between text-sm md:text-base font-medium relative z-10">
-                    <!-- ID added for JS automation -->
                     <span class="text-gray-300"><strong class="text-white" id="trackerPercent">0.0%</strong> Capacity Reached</span>
                     <span class="text-navgreen flex items-center gap-2">
                         <span class="relative flex h-3 w-3">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-navgreen opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-3 w-3 bg-navgreen"></span>
                         </span>
-                        <!-- ID added for JS automation -->
                         <strong><span id="trackerRemaining">6,833</span></strong> Spots Remaining
                     </span>
                 </div>
                 
                 <div class="mt-5 pt-4 border-t border-white/10 relative z-10 text-xs text-gray-400 text-center">
-                    <i class="fa-solid fa-circle-info text-navblue mr-1"></i> Core £5.1M funding is tracked exclusively via the <strong class="text-white">£750 Lifetime Founder</strong> tier. <br class="hidden sm:block">Contributions from short-term £100/£250 tiers flow directly into unlocking Community Stretch Goals.
+                    <i class="fa-solid fa-circle-info text-navblue mr-1"></i> Core £5.1M funding is tracked exclusively via the <strong class="text-white">£750 Lifetime Co-Founder</strong> tier. <br class="hidden sm:block">Contributions from short-term £100/£250 tiers flow directly into unlocking Community Stretch Goals.
                 </div>
             </div>
 
@@ -185,7 +172,6 @@
         </div>
     </div>
 
-    <!-- Demo & Gallery Section -->
     <div id="demo" class="py-24 relative border-t border-white/5 bg-darkbg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -193,7 +179,6 @@
                 <p class="text-xl text-gray-400">Watch how our patent-pending algorithm protects you in real-time Average Speed zones.</p>
             </div>
 
-            <!-- Main Video Placeholder (UPDATED FOR YOUTUBE) -->
             <div class="max-w-5xl mx-auto mb-12 relative">
                 <div class="absolute -inset-1 bg-gradient-to-r from-navblue to-navgreen rounded-2xl blur opacity-30"></div>
                 <div class="relative aspect-video glass-panel rounded-2xl overflow-hidden border border-white/10 bg-black shadow-2xl">
@@ -208,7 +193,6 @@
                 </div>
             </div>
 
-            <!-- UI Gallery Grid -->
             <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="glass-panel rounded-xl overflow-hidden aspect-[9/16] relative group border border-white/10">
                     <div class="absolute inset-0 bg-navgreen/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
@@ -249,13 +233,12 @@
         </div>
     </div>
 
-    <!-- The Exponential ROI Section -->
     <div id="roi" class="py-24 bg-cardbg relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">The <span class="text-navgreen">Exponential</span> ROI</h2>
-                    <p class="text-xl text-gray-300 mb-6">Our £5.1M launch goal relies entirely on exactly 6,833 Elite Founders pledging £750. This limited group will unlock an unprecedented financial advantage on the road.</p>
+                    <p class="text-xl text-gray-300 mb-6">Our £5.1M launch goal relies entirely on exactly 6,833 Elite Co-Founders pledging £750. This limited group will unlock an unprecedented financial advantage on the road.</p>
                     
                     <div class="glass-panel border-l-4 border-l-navgreen p-6 rounded-r-xl mb-8">
                         <h4 class="text-xl font-bold text-navgreen mb-2">The Math: £750 vs. Half a Million</h4>
@@ -279,7 +262,6 @@
         </div>
     </div>
 
-    <!-- INTERACTIVE CALCULATOR SECTION -->
     <div id="calculator" class="py-20 relative bg-darkbg border-y border-white/5">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -310,7 +292,7 @@
                             <span id="standardPriceDisplay" class="text-xl text-gray-400 line-through">£1,500</span>
                         </div>
                         <div>
-                            <span class="text-sm text-navblue block mb-1 font-bold">Today's Founder Price</span>
+                            <span class="text-sm text-navblue block mb-1 font-bold">Today's Co-Founder Price</span>
                             <span id="founderPriceDisplay" class="text-5xl font-black text-white">£750</span>
                         </div>
                     </div>
@@ -332,7 +314,6 @@
         </div>
     </div>
 
-    <!-- Pricing / Rewards Section -->
     <div id="rewards" class="py-24 relative overflow-hidden bg-cardbg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -342,7 +323,6 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 
-                <!-- Tier 1: £100 -->
                 <div class="glass-panel rounded-2xl p-8 border border-white/10 flex flex-col pricing-card transition-all duration-300">
                     <h3 class="text-2xl font-bold text-white mb-2">6-Month Shield</h3>
                     <p class="text-gray-400 mb-6 min-h-[48px]">Perfect for independent drivers testing the waters.</p>
@@ -361,12 +341,11 @@
                     </button>
                 </div>
 
-                <!-- Tier 3: £750 (FEATURED) -->
                 <div class="glass-panel rounded-2xl p-8 border-2 border-navgreen relative flex flex-col pricing-card transition-all duration-300 transform md:-translate-y-4 shadow-[0_0_30px_rgba(0,255,102,0.15)]">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-navgreen text-black font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wide whitespace-nowrap">
-                        Limited to 6,833 Founders
+                        Limited to 6,833 Co-Founders
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-2 mt-2">50% Lifetime Founder</h3>
+                    <h3 class="text-2xl font-bold text-white mb-2 mt-2">50% Lifetime Co-Founder</h3>
                     <p class="text-navgreen mb-6 min-h-[48px] font-semibold">Secure your permanent advantage. Get 50% Off For Life.</p>
                     <div class="mb-6">
                         <span class="text-5xl font-black text-white">£750</span>
@@ -377,16 +356,14 @@
                         <li><i class="fa-solid fa-check text-navgreen mr-2"></i> 1st Year Included Free</li>
                         <li><i class="fa-solid fa-check text-navgreen mr-2"></i> Guaranteed Rate Lock</li>
                         <li><i class="fa-solid fa-check text-navgreen mr-2"></i> Priority Support Line</li>
-                        <li><i class="fa-solid fa-award text-navgreen mr-2"></i> Name in "Founders" Credits</li>
+                        <li><i class="fa-solid fa-award text-navgreen mr-2"></i> Name in "Co-Founders" Credits</li>
                     </ul>
-                    <button onclick="openCheckout('50% Lifetime Founder', 750)" class="w-full bg-navgreen hover:bg-white text-black font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(0,255,102,0.3)] text-lg">
+                    <button onclick="openCheckout('50% Lifetime Co-Founder', 750)" class="w-full bg-navgreen hover:bg-white text-black font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(0,255,102,0.3)] text-lg">
                         Claim 50% Lifetime Status
                     </button>
-                    <!-- JS will update this text too -->
                     <p class="text-center text-xs text-gray-400 mt-3">Only <span id="tierRemainingSpots">6,833</span> spots left</p>
                 </div>
 
-                <!-- Tier 2: £250 -->
                 <div class="glass-panel rounded-2xl p-8 border border-white/10 flex flex-col pricing-card transition-all duration-300">
                     <h3 class="text-2xl font-bold text-white mb-2">1-Year Pro</h3>
                     <p class="text-gray-400 mb-6 min-h-[48px]">Maximum short-term value for contract drivers.</p>
@@ -407,7 +384,6 @@
 
             </div>
 
-            <!-- Fleet / B2B Packages -->
             <div class="max-w-6xl mx-auto mt-16">
                 <div class="text-center mb-10">
                     <div class="inline-block bg-navblue/20 text-navblue text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4 border border-navblue/30">
@@ -418,7 +394,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Fleet Starter (10 Trucks) -->
                     <div class="glass-panel rounded-2xl p-8 border border-navblue/40 relative overflow-hidden group hover:border-navblue transition-colors duration-300">
                         <div class="absolute top-0 right-0 bg-navblue text-black font-bold px-4 py-1 rounded-bl-xl text-sm">Save £2,500</div>
                         <h4 class="text-2xl font-bold text-white mb-2">Fleet Starter</h4>
@@ -433,13 +408,11 @@
                             <li><i class="fa-solid fa-desktop text-navblue mr-2"></i> Admin Dashboard Access</li>
                             <li><i class="fa-solid fa-file-invoice text-navblue mr-2"></i> Centralized Billing</li>
                         </ul>
-                        <!-- TRIGGER MODAL -->
                         <button onclick="openCheckout('Fleet Starter (10 Trucks)', 5000)" class="w-full bg-navblue/20 hover:bg-navblue text-white hover:text-black font-bold py-3 rounded-xl transition border border-navblue/50">
                             Claim 10-Truck Fleet
                         </button>
                     </div>
 
-                    <!-- Fleet Pro (50 Trucks) -->
                     <div class="glass-panel rounded-2xl p-8 border border-navgreen/40 relative overflow-hidden group hover:border-navgreen transition-colors duration-300">
                         <div class="absolute top-0 right-0 bg-navgreen text-black font-bold px-4 py-1 rounded-bl-xl text-sm">Save £17,500</div>
                         <h4 class="text-2xl font-bold text-white mb-2">Fleet Pro</h4>
@@ -454,14 +427,12 @@
                             <li><i class="fa-solid fa-desktop text-navgreen mr-2"></i> Admin Dashboard Access</li>
                             <li><i class="fa-solid fa-headset text-navgreen mr-2"></i> Dedicated Account Manager</li>
                         </ul>
-                        <!-- TRIGGER MODAL -->
                         <button onclick="openCheckout('Fleet Pro (50 Trucks)', 20000)" class="w-full bg-navgreen/20 hover:bg-navgreen text-white hover:text-black font-bold py-3 rounded-xl transition border border-navgreen/50">
                             Claim 50-Truck Fleet
                         </button>
                     </div>
                 </div>
 
-                <!-- Custom Size Explainer (UPDATED: NO KICKSTARTER) -->
                 <div class="mt-8 glass-panel p-6 md:p-8 rounded-2xl border border-white/10 flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-cardbg to-darkbg">
                     <div class="md:w-2/3 md:pr-8 mb-6 md:mb-0 text-center md:text-left">
                         <h4 class="text-xl font-bold text-white mb-2"><i class="fa-solid fa-circle-question text-navblue mr-2"></i> Custom Fleet Size?</h4>
@@ -479,7 +450,6 @@
         </div>
     </div>
 
-    <!-- CHECKOUT MODAL FORM -->
     <div id="checkoutModal" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
         <div class="bg-[#0f172a] border border-white/10 rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden relative modal-enter">
             <button onclick="closeCheckout()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
@@ -495,7 +465,7 @@
                 <div class="bg-cardbg border border-navblue/30 rounded-xl p-4 mb-6 flex justify-between items-center shadow-[0_0_15px_rgba(0,212,255,0.1)]">
                     <div>
                         <p class="text-xs text-navblue uppercase tracking-wider font-bold mb-1">Selected Reward</p>
-                        <p id="checkoutTierName" class="text-white font-semibold text-lg">50% Lifetime Founder</p>
+                        <p id="checkoutTierName" class="text-white font-semibold text-lg">50% Lifetime Co-Founder</p>
                     </div>
                     <div class="text-right">
                         <p id="checkoutPrice" class="text-2xl font-black text-white">£750</p>
@@ -529,7 +499,6 @@
                         </div>
                     </div>
 
-                    <!-- ПРИМІТКА ПРО ОПЛАТУ: Для реальної оплати тут буде редірект на Stripe -->
                     <div class="space-y-3">
                         <button type="submit" id="checkoutSubmitBtn" class="w-full bg-navgreen hover:bg-white text-black font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(0,255,102,0.3)] text-lg flex items-center justify-center gap-2">
                             <i class="fa-solid fa-lock text-sm"></i> Proceed to Secure Payment
@@ -544,42 +513,62 @@
         </div>
     </div>
 
-    <!-- Footer (Опущено для скорочення, залиште свій) -->
+    <footer class="border-t border-white/10 bg-cardbg pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-route text-navblue text-2xl"></i>
+                        <span class="font-bold text-2xl tracking-tight">LogiPark <span class="text-navblue">Tech</span></span>
+                    </div>
+                    <p class="text-gray-400 max-w-sm">Driving logistics forward. Patent pending algorithms saving drivers millions in unjustified fines.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Campaign</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-navblue transition">The Mission</a></li>
+                        <li><a href="#" class="hover:text-navblue transition">Stretch Goals</a></li>
+                        <li><a href="#" class="hover:text-navblue transition">Rewards</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Legal</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-navblue transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-navblue transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-navblue transition">Patent Info (UK IPO)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">© 2026 LogiPark Technologies Ltd. All rights reserved. | Patent Pending (USPTO & UK IPO).</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <!-- СКРИПТИ -->
     <script>
-        // ==========================================
-        // 1. АВТОМАТИЗАЦІЯ ПРОГРЕС-БАРУ (ЗМІНЮВАТИ ТУТ)
-        // ==========================================
-        
-        // ВАЖЛИВО: Назаре, просто міняйте цю цифру щодня у файлі на GitHub.
-        // Усе інше на сайті (відсотки, смуга, залишок місць) перерахується автоматично!
         const CURRENT_BACKERS = 0; 
-        
         const TOTAL_CAPACITY = 6833;
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Математика
             const remainingSpots = TOTAL_CAPACITY - CURRENT_BACKERS;
             let percent = (CURRENT_BACKERS / TOTAL_CAPACITY) * 100;
-            // Щоб смуга не була порожньою на старті, додамо мінімум 1% візуально, якщо є хоч 1 бейкер
             let displayPercent = CURRENT_BACKERS > 0 && percent < 1 ? 1 : percent;
 
-            // Оновлення HTML
             document.getElementById('trackerFilled').innerText = CURRENT_BACKERS.toLocaleString('en-GB');
             document.getElementById('trackerRemaining').innerText = remainingSpots.toLocaleString('en-GB');
             document.getElementById('tierRemainingSpots').innerText = remainingSpots.toLocaleString('en-GB');
             document.getElementById('trackerPercent').innerText = percent.toFixed(1) + '%';
             
-            // Анімація смуги (з затримкою для красивого ефекту виїзду)
             setTimeout(() => {
                 document.getElementById('trackerBar').style.width = displayPercent + '%';
             }, 500);
         });
 
-        // ==========================================
-        // 2. ЛОГІКА КАЛЬКУЛЯТОРА
-        // ==========================================
         const slider = document.getElementById('truckSlider');
         const countDisplay = document.getElementById('truckCountDisplay');
         const standardPrice = document.getElementById('standardPriceDisplay');
@@ -621,9 +610,6 @@
         slider.addEventListener('input', calculateROI);
         calculateROI();
 
-        // ==========================================
-        // 3. ЛОГІКА ФОРМИ ОПЛАТИ (STRIPE ПІДГОТОВКА)
-        // ==========================================
         const modal = document.getElementById('checkoutModal');
         const checkoutTierName = document.getElementById('checkoutTierName');
         const checkoutPrice = document.getElementById('checkoutPrice');
@@ -655,19 +641,15 @@
             document.body.style.overflow = 'auto';
         }
 
-        // ОБРОБКА ОПЛАТИ (STRIPE REDIRECT)
         function handleCheckoutSubmit(e) {
             e.preventDefault();
             
-            // Збираємо дані клієнта (щоб ви знали, хто перейшов на оплату)
             const name = document.getElementById('clientName').value;
             const email = document.getElementById('clientEmail').value;
             const company = document.getElementById('clientCompany').value;
             
             checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Connecting to Stripe...';
             
-            // ТУТ ВАШІ РЕАЛЬНІ ПОСИЛАННЯ ВІД STRIPE
-            // Ви створите ці посилання в кабінеті Stripe (Products -> Payment Links)
             let stripePaymentLink = "";
             
             if(currentSelectedPrice === 100) {
@@ -684,8 +666,6 @@
 
             setTimeout(() => {
                 if(stripePaymentLink !== "") {
-                    // Редірект на захищену сторінку Stripe
-                    // Передаємо email в URL, щоб Stripe сам його підставив
                     window.location.href = stripePaymentLink + "?prefilled_email=" + encodeURIComponent(email);
                 } else {
                     alert("Stripe links are not configured yet. Name: " + name + " | Tier: " + currentTierName);
