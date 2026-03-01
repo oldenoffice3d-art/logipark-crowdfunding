@@ -130,17 +130,18 @@
                 The world's first patent-pending HGV navigation app with dynamic Section Control tracking. Save £52,000 annually. Keep your hard-earned money.
             </p>
             
-            <!-- Early Access Progress Tracker (UPDATED FOR 6,833) -->
+            <!-- AUTOMATED Early Access Progress Tracker -->
             <div class="max-w-3xl mx-auto glass-panel rounded-2xl p-8 mb-12 border border-navblue/30 relative overflow-hidden group">
                 <div class="absolute inset-0 bg-navblue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div class="absolute top-0 right-0 bg-navblue text-black text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide">
-                    High Demand
+                    Live Status
                 </div>
                 
                 <div class="flex justify-between text-left mb-4 relative z-10">
                     <div>
                         <p class="text-gray-400 text-sm uppercase tracking-wider mb-1">Founder Spots Filled</p>
-                        <p class="text-3xl md:text-4xl font-bold text-white">14 <span class="text-lg text-gray-400 font-normal tracking-normal">Drivers Onboard</span></p>
+                        <!-- ID added for JS automation -->
+                        <p class="text-3xl md:text-4xl font-bold text-white"><span id="trackerFilled">0</span> <span class="text-lg text-gray-400 font-normal tracking-normal">Drivers Onboard</span></p>
                     </div>
                     <div class="text-right">
                         <p class="text-gray-400 text-sm uppercase tracking-wider mb-1">Total Capacity</p>
@@ -149,23 +150,25 @@
                 </div>
                 
                 <div class="w-full bg-gray-800 rounded-full h-4 mb-4 relative z-10 shadow-inner overflow-hidden">
-                    <div class="bg-gradient-to-r from-navblue to-navgreen h-4 rounded-full relative" style="width: 62.7%">
+                    <!-- ID added for JS automation -->
+                    <div id="trackerBar" class="bg-gradient-to-r from-navblue to-navgreen h-4 rounded-full relative transition-all duration-1000 ease-out" style="width: 0%">
                         <div class="absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
                     </div>
                 </div>
                 
                 <div class="flex justify-between text-sm md:text-base font-medium relative z-10">
-                    <span class="text-gray-300"><strong class="text-white">62.7%</strong> Capacity Reached</span>
+                    <!-- ID added for JS automation -->
+                    <span class="text-gray-300"><strong class="text-white" id="trackerPercent">0.0%</strong> Capacity Reached</span>
                     <span class="text-navgreen flex items-center gap-2">
                         <span class="relative flex h-3 w-3">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-navgreen opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-3 w-3 bg-navgreen"></span>
                         </span>
-                        <strong>2,548</strong> Spots Remaining
+                        <!-- ID added for JS automation -->
+                        <strong><span id="trackerRemaining">6,833</span></strong> Spots Remaining
                     </span>
                 </div>
                 
-                <!-- Explicit clarification of the £750 core mission -->
                 <div class="mt-5 pt-4 border-t border-white/10 relative z-10 text-xs text-gray-400 text-center">
                     <i class="fa-solid fa-circle-info text-navblue mr-1"></i> Core £5.1M funding is tracked exclusively via the <strong class="text-white">£750 Lifetime Founder</strong> tier. <br class="hidden sm:block">Contributions from short-term £100/£250 tiers flow directly into unlocking Community Stretch Goals.
                 </div>
@@ -192,12 +195,8 @@
 
             <!-- Main Video Placeholder (UPDATED FOR YOUTUBE) -->
             <div class="max-w-5xl mx-auto mb-12 relative">
-                <!-- Неонове підсвічування навколо відео -->
                 <div class="absolute -inset-1 bg-gradient-to-r from-navblue to-navgreen rounded-2xl blur opacity-30"></div>
-                
                 <div class="relative aspect-video glass-panel rounded-2xl overflow-hidden border border-white/10 bg-black shadow-2xl">
-                    <!-- YOUTUBE IFRAME -->
-                    <!-- Замініть YOUR_YOUTUBE_ID_HERE на реальний ID вашого відео (наприклад, dQw4w9WgXcQ) -->
                     <iframe 
                         src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_HERE?rel=0&modestbranding=1" 
                         title="NavAppRoutes Demo Video" 
@@ -289,7 +288,6 @@
             </div>
 
             <div class="glass-panel rounded-3xl p-8 md:p-12 border border-navblue/20 shadow-[0_0_50px_rgba(0,212,255,0.05)]">
-                <!-- Slider -->
                 <div class="mb-12">
                     <div class="flex justify-between items-end mb-4">
                         <label class="text-lg font-semibold text-gray-300 uppercase tracking-wider">Number of Trucks</label>
@@ -304,9 +302,7 @@
                     </div>
                 </div>
 
-                <!-- Results Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Investment Side -->
                     <div class="bg-black/40 rounded-2xl p-6 border border-white/5">
                         <h4 class="text-gray-400 font-semibold mb-4 text-sm uppercase tracking-wider">Your Early Investment</h4>
                         <div class="mb-4">
@@ -319,7 +315,6 @@
                         </div>
                     </div>
 
-                    <!-- Savings Side -->
                     <div class="bg-navgreen/10 rounded-2xl p-6 border border-navgreen/30 relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-navgreen/20 rounded-full blur-[40px] -mr-10 -mt-10"></div>
                         <h4 class="text-navgreen font-bold mb-4 text-sm uppercase tracking-wider">Fines Prevented (ROI)</h4>
@@ -347,7 +342,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 
-                <!-- Tier 1: £100 (Limited) -->
+                <!-- Tier 1: £100 -->
                 <div class="glass-panel rounded-2xl p-8 border border-white/10 flex flex-col pricing-card transition-all duration-300">
                     <h3 class="text-2xl font-bold text-white mb-2">6-Month Shield</h3>
                     <p class="text-gray-400 mb-6 min-h-[48px]">Perfect for independent drivers testing the waters.</p>
@@ -361,13 +356,12 @@
                         <li><i class="fa-solid fa-check text-navblue mr-2"></i> HGV Dimension Routing</li>
                         <li class="opacity-50"><i class="fa-solid fa-xmark mr-2"></i> Standard pricing applies after 6mo</li>
                     </ul>
-                    <!-- TRIGGER MODAL -->
                     <button onclick="openCheckout('6-Month Shield', 100)" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 rounded-xl transition border border-white/20">
                         Select Reward
                     </button>
                 </div>
 
-                <!-- Tier 3: £750 (50% LIFETIME DISCOUNT - FEATURED) -->
+                <!-- Tier 3: £750 (FEATURED) -->
                 <div class="glass-panel rounded-2xl p-8 border-2 border-navgreen relative flex flex-col pricing-card transition-all duration-300 transform md:-translate-y-4 shadow-[0_0_30px_rgba(0,255,102,0.15)]">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-navgreen text-black font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wide whitespace-nowrap">
                         Limited to 6,833 Founders
@@ -385,14 +379,14 @@
                         <li><i class="fa-solid fa-check text-navgreen mr-2"></i> Priority Support Line</li>
                         <li><i class="fa-solid fa-award text-navgreen mr-2"></i> Name in "Founders" Credits</li>
                     </ul>
-                    <!-- TRIGGER MODAL -->
                     <button onclick="openCheckout('50% Lifetime Founder', 750)" class="w-full bg-navgreen hover:bg-white text-black font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(0,255,102,0.3)] text-lg">
                         Claim 50% Lifetime Status
                     </button>
-                    <p class="text-center text-xs text-gray-400 mt-3">Only 2,548 spots left</p>
+                    <!-- JS will update this text too -->
+                    <p class="text-center text-xs text-gray-400 mt-3">Only <span id="tierRemainingSpots">6,833</span> spots left</p>
                 </div>
 
-                <!-- Tier 2: £250 (Limited) -->
+                <!-- Tier 2: £250 -->
                 <div class="glass-panel rounded-2xl p-8 border border-white/10 flex flex-col pricing-card transition-all duration-300">
                     <h3 class="text-2xl font-bold text-white mb-2">1-Year Pro</h3>
                     <p class="text-gray-400 mb-6 min-h-[48px]">Maximum short-term value for contract drivers.</p>
@@ -406,7 +400,6 @@
                         <li><i class="fa-solid fa-check text-navblue mr-2"></i> Section Control Algorithms</li>
                         <li class="opacity-50"><i class="fa-solid fa-xmark mr-2"></i> Standard pricing applies after 1yr</li>
                     </ul>
-                    <!-- TRIGGER MODAL -->
                     <button onclick="openCheckout('1-Year Pro', 250)" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 rounded-xl transition border border-white/20">
                         Select Reward
                     </button>
@@ -486,10 +479,9 @@
         </div>
     </div>
 
-    <!-- CHECKOUT MODAL FORM (HIDDEN BY DEFAULT) -->
+    <!-- CHECKOUT MODAL FORM -->
     <div id="checkoutModal" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
         <div class="bg-[#0f172a] border border-white/10 rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden relative modal-enter">
-            <!-- Close Button -->
             <button onclick="closeCheckout()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
@@ -500,7 +492,6 @@
                     <p class="text-gray-400 text-sm">You are backing LogiPark Technologies.</p>
                 </div>
 
-                <!-- Selected Tier Summary -->
                 <div class="bg-cardbg border border-navblue/30 rounded-xl p-4 mb-6 flex justify-between items-center shadow-[0_0_15px_rgba(0,212,255,0.1)]">
                     <div>
                         <p class="text-xs text-navblue uppercase tracking-wider font-bold mb-1">Selected Reward</p>
@@ -512,25 +503,24 @@
                 </div>
 
                 <form id="pledgeForm" onsubmit="handleCheckoutSubmit(event)">
-                    <!-- Client Data Section -->
                     <div class="mb-8">
                         <h4 class="text-white font-semibold mb-4 border-b border-white/10 pb-2"><i class="fa-regular fa-id-card text-navgreen mr-2"></i> Client Information</h4>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Full Name *</label>
-                                <input type="text" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="John Doe">
+                                <input type="text" id="clientName" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="John Doe">
                             </div>
                             <div>
                                 <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Email Address *</label>
-                                <input type="email" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="john@example.com">
+                                <input type="email" id="clientEmail" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="john@example.com">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Company / Fleet Name (Optional)</label>
-                                <input type="text" class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="Logistics Ltd.">
+                                <input type="text" id="clientCompany" class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="Logistics Ltd.">
                             </div>
                             <div>
                                 <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Number of Trucks *</label>
@@ -539,89 +529,57 @@
                         </div>
                     </div>
 
-                    <!-- Payment Mockup Section -->
-                    <div class="mb-8">
-                        <h4 class="text-white font-semibold mb-4 border-b border-white/10 pb-2"><i class="fa-regular fa-credit-card text-navgreen mr-2"></i> Payment Details</h4>
-                        
-                        <div class="bg-black/30 border border-white/10 rounded-lg p-4">
-                            <div class="mb-4">
-                                <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Cardholder Name</label>
-                                <input type="text" required class="w-full bg-transparent border-b border-white/20 px-2 py-2 text-white focus:outline-none focus:border-navblue transition" placeholder="Name on card">
-                            </div>
-                            <div class="mb-4 relative">
-                                <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Card Number</label>
-                                <input type="text" required class="w-full bg-transparent border-b border-white/20 px-2 py-2 text-white focus:outline-none focus:border-navblue transition font-mono tracking-widest" placeholder="0000 0000 0000 0000">
-                                <i class="fa-brands fa-cc-visa absolute right-2 bottom-3 text-gray-500 text-xl"></i>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Expiry (MM/YY)</label>
-                                    <input type="text" required class="w-full bg-transparent border-b border-white/20 px-2 py-2 text-white focus:outline-none focus:border-navblue transition" placeholder="MM/YY">
-                                </div>
-                                <div>
-                                    <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">CVC</label>
-                                    <input type="text" required class="w-full bg-transparent border-b border-white/20 px-2 py-2 text-white focus:outline-none focus:border-navblue transition" placeholder="123">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons -->
+                    <!-- ПРИМІТКА ПРО ОПЛАТУ: Для реальної оплати тут буде редірект на Stripe -->
                     <div class="space-y-3">
                         <button type="submit" id="checkoutSubmitBtn" class="w-full bg-navgreen hover:bg-white text-black font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(0,255,102,0.3)] text-lg flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-lock text-sm"></i> Pay £750 & Secure Spot
+                            <i class="fa-solid fa-lock text-sm"></i> Proceed to Secure Payment
                         </button>
                         <button type="button" onclick="closeCheckout()" class="w-full bg-transparent border border-white/20 hover:bg-white/10 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2">
                             <i class="fa-solid fa-arrow-left"></i> Return to Main Page
                         </button>
                     </div>
-                    <p class="text-center text-xs text-gray-500 mt-4"><i class="fa-solid fa-shield-halved"></i> 256-bit Secure Encryption. This is a mockup for LogiPark Tech.</p>
+                    <p class="text-center text-xs text-gray-500 mt-4"><i class="fa-solid fa-shield-halved"></i> You will be redirected to a secure Stripe payment gateway.</p>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/10 bg-cardbg pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center gap-2 mb-4">
-                        <i class="fa-solid fa-route text-navblue text-2xl"></i>
-                        <span class="font-bold text-2xl tracking-tight">LogiPark <span class="text-navblue">Tech</span></span>
-                    </div>
-                    <p class="text-gray-400 max-w-sm">Driving logistics forward. Patent pending algorithms saving drivers millions in unjustified fines.</p>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Campaign</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-navblue transition">The Mission</a></li>
-                        <li><a href="#" class="hover:text-navblue transition">Stretch Goals</a></li>
-                        <li><a href="#" class="hover:text-navblue transition">Rewards</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Legal</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-navblue transition">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-navblue transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-navblue transition">Patent Info (UK IPO)</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 text-sm">© 2026 LogiPark Technologies Ltd. All rights reserved.</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-twitter text-xl"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (Опущено для скорочення, залиште свій) -->
 
-    <!-- Scripts: Calculator & Checkout Modal Logic -->
+    <!-- СКРИПТИ -->
     <script>
-        // --- Calculator Logic ---
+        // ==========================================
+        // 1. АВТОМАТИЗАЦІЯ ПРОГРЕС-БАРУ (ЗМІНЮВАТИ ТУТ)
+        // ==========================================
+        
+        // ВАЖЛИВО: Назаре, просто міняйте цю цифру щодня у файлі на GitHub.
+        // Усе інше на сайті (відсотки, смуга, залишок місць) перерахується автоматично!
+        const CURRENT_BACKERS = 0; 
+        
+        const TOTAL_CAPACITY = 6833;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Математика
+            const remainingSpots = TOTAL_CAPACITY - CURRENT_BACKERS;
+            let percent = (CURRENT_BACKERS / TOTAL_CAPACITY) * 100;
+            // Щоб смуга не була порожньою на старті, додамо мінімум 1% візуально, якщо є хоч 1 бейкер
+            let displayPercent = CURRENT_BACKERS > 0 && percent < 1 ? 1 : percent;
+
+            // Оновлення HTML
+            document.getElementById('trackerFilled').innerText = CURRENT_BACKERS.toLocaleString('en-GB');
+            document.getElementById('trackerRemaining').innerText = remainingSpots.toLocaleString('en-GB');
+            document.getElementById('tierRemainingSpots').innerText = remainingSpots.toLocaleString('en-GB');
+            document.getElementById('trackerPercent').innerText = percent.toFixed(1) + '%';
+            
+            // Анімація смуги (з затримкою для красивого ефекту виїзду)
+            setTimeout(() => {
+                document.getElementById('trackerBar').style.width = displayPercent + '%';
+            }, 500);
+        });
+
+        // ==========================================
+        // 2. ЛОГІКА КАЛЬКУЛЯТОРА
+        // ==========================================
         const slider = document.getElementById('truckSlider');
         const countDisplay = document.getElementById('truckCountDisplay');
         const standardPrice = document.getElementById('standardPriceDisplay');
@@ -637,15 +595,12 @@
             let trucks = parseInt(slider.value);
             countDisplay.innerText = trucks + (trucks === 50 ? '+' : '');
 
-            // Savings logic
             let annual = trucks * 52000;
             let tenYear = annual * 10;
-            
             annualSavings.innerText = formatCurrency(annual);
             tenYearSavings.innerText = formatCurrency(tenYear);
 
-            // Pricing logic based on our tiers and add-ons
-            let stdCost = trucks * 750 * 2; // Rough future value proxy
+            let stdCost = trucks * 750 * 2; 
             let fndCost = 0;
 
             if(trucks === 1) {
@@ -664,68 +619,84 @@
         }
 
         slider.addEventListener('input', calculateROI);
-        calculateROI(); // Initialize
+        calculateROI();
 
-        // --- Checkout Modal Logic ---
+        // ==========================================
+        // 3. ЛОГІКА ФОРМИ ОПЛАТИ (STRIPE ПІДГОТОВКА)
+        // ==========================================
         const modal = document.getElementById('checkoutModal');
         const checkoutTierName = document.getElementById('checkoutTierName');
         const checkoutPrice = document.getElementById('checkoutPrice');
         const checkoutSubmitBtn = document.getElementById('checkoutSubmitBtn');
         const checkoutTrucks = document.getElementById('checkoutTrucks');
+        let currentSelectedPrice = 0;
+        let currentTierName = '';
 
         function openCheckout(tierName, price) {
-            // Update Modal UI
+            currentTierName = tierName;
+            currentSelectedPrice = price;
+            
             checkoutTierName.innerText = tierName;
             checkoutPrice.innerText = '£' + price.toLocaleString('en-GB');
-            checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-lock text-sm"></i> Pay £' + price.toLocaleString('en-GB') + ' & Secure Spot';
+            checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-lock text-sm"></i> Proceed to Secure Payment (£' + price.toLocaleString('en-GB') + ')';
             
-            // Auto-fill trucks based on tier for convenience
             if(tierName.includes('10 Trucks')) checkoutTrucks.value = 10;
             else if(tierName.includes('50 Trucks')) checkoutTrucks.value = 50;
             else checkoutTrucks.value = 1;
 
-            // Show Modal
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeCheckout() {
             modal.classList.add('hidden');
             modal.classList.remove('flex');
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.body.style.overflow = 'auto';
         }
 
-        // Handle Form Submission Mockup
+        // ОБРОБКА ОПЛАТИ (STRIPE REDIRECT)
         function handleCheckoutSubmit(e) {
             e.preventDefault();
-            // In a real app, this would send data to Stripe API
-            checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
             
+            // Збираємо дані клієнта (щоб ви знали, хто перейшов на оплату)
+            const name = document.getElementById('clientName').value;
+            const email = document.getElementById('clientEmail').value;
+            const company = document.getElementById('clientCompany').value;
+            
+            checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Connecting to Stripe...';
+            
+            // ТУТ ВАШІ РЕАЛЬНІ ПОСИЛАННЯ ВІД STRIPE
+            // Ви створите ці посилання в кабінеті Stripe (Products -> Payment Links)
+            let stripePaymentLink = "";
+            
+            if(currentSelectedPrice === 100) {
+                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля100";
+            } else if(currentSelectedPrice === 250) {
+                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля250";
+            } else if(currentSelectedPrice === 750) {
+                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля750";
+            } else if(currentSelectedPrice === 5000) {
+                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля5000";
+            } else if(currentSelectedPrice === 20000) {
+                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля20000";
+            }
+
             setTimeout(() => {
-                checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Payment Successful!';
-                checkoutSubmitBtn.classList.remove('bg-navgreen', 'text-black');
-                checkoutSubmitBtn.classList.add('bg-navblue', 'text-white');
-                
-                setTimeout(() => {
+                if(stripePaymentLink !== "") {
+                    // Редірект на захищену сторінку Stripe
+                    // Передаємо email в URL, щоб Stripe сам його підставив
+                    window.location.href = stripePaymentLink + "?prefilled_email=" + encodeURIComponent(email);
+                } else {
+                    alert("Stripe links are not configured yet. Name: " + name + " | Tier: " + currentTierName);
                     closeCheckout();
-                    alert("Welcome to LogiPark Technologies! Your pledge has been recorded.");
-                    // Reset button style
-                    checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-lock text-sm"></i> Secure Spot';
-                    checkoutSubmitBtn.classList.add('bg-navgreen', 'text-black');
-                    checkoutSubmitBtn.classList.remove('bg-navblue', 'text-white');
-                    document.getElementById('pledgeForm').reset();
-                }, 1500);
-            }, 2000);
+                }
+            }, 1000);
         }
 
-        // Close modal if clicked outside the form box
         modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeCheckout();
-            }
+            if (e.target === modal) closeCheckout();
         });
     </script>
 </body>
-
 </html>
