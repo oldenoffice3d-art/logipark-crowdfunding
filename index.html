@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-GB" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,7 +104,7 @@
         </div>
     </nav>
 
-    <div class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden" id="mission">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
             <div class="absolute top-20 left-10 w-72 h-72 bg-navblue/20 rounded-full blur-[100px]"></div>
             <div class="absolute bottom-20 right-10 w-96 h-96 bg-navgreen/10 rounded-full blur-[120px]"></div>
@@ -119,7 +119,7 @@
                 <span class="gradient-text">Speed Trap System.</span>
             </h1>
             <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 mb-10">
-                The world's first patent-pending HGV navigation app with dynamic Section Control tracking. Save £52,000 annually. Keep your hard-earned money.
+                The world's first patent-pending HGV navigation app with dynamic Average Speed (Section Control) tracking. Save £52,000 annually. Keep your hard-earned money.
             </p>
             
             <div class="max-w-3xl mx-auto glass-panel rounded-2xl p-8 mb-12 border border-navblue/30 relative overflow-hidden group">
@@ -161,7 +161,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-center gap-4">
+            <div class="flex justify-center flex-wrap gap-4">
                 <a href="#rewards" class="bg-navblue text-black font-bold px-8 py-4 rounded-full text-lg hover:bg-white transition flex items-center gap-2 shadow-[0_0_20px_rgba(0,212,255,0.4)]">
                     <i class="fa-solid fa-rocket"></i> View Backer Rewards
                 </a>
@@ -176,7 +176,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">See It In <span class="text-navblue">Action</span></h2>
-                <p class="text-xl text-gray-400">Watch how our patent-pending algorithm protects you in real-time Average Speed zones.</p>
+                <p class="text-xl text-gray-400">Watch how our patent-pending Deterministic Latency Reduction algorithm protects you in real-time Average Speed Camera zones.</p>
             </div>
 
             <div class="max-w-5xl mx-auto mb-12 relative">
@@ -241,7 +241,7 @@
                     <p class="text-xl text-gray-300 mb-6">Our £5.1M launch goal relies entirely on exactly 6,833 Elite Co-Founders pledging £750. This limited group will unlock an unprecedented financial advantage on the road.</p>
                     
                     <div class="glass-panel border-l-4 border-l-navgreen p-6 rounded-r-xl mb-8">
-                        <h4 class="text-xl font-bold text-navgreen mb-2">The Math: £750 vs. Half a Million</h4>
+                        <h4 class="text-xl font-bold text-navgreen mb-2">The Maths: £750 vs. Half a Million</h4>
                         <p class="text-lg text-gray-200">An initial investment of just £750 secures you a <strong class="text-white">50% Lifetime Discount</strong> on our platform. Because the app saves you £52,000 annually, your return exceeds your pledge by <strong class="text-white">thousands of times</strong> over your career.</p>
                     </div>
 
@@ -272,7 +272,7 @@
             <div class="glass-panel rounded-3xl p-8 md:p-12 border border-navblue/20 shadow-[0_0_50px_rgba(0,212,255,0.05)]">
                 <div class="mb-12">
                     <div class="flex justify-between items-end mb-4">
-                        <label class="text-lg font-semibold text-gray-300 uppercase tracking-wider">Number of Trucks</label>
+                        <label class="text-lg font-semibold text-gray-300 uppercase tracking-wider">Number of HGVs</label>
                         <span id="truckCountDisplay" class="text-4xl font-black text-navblue">1</span>
                     </div>
                     <input type="range" id="truckSlider" min="1" max="50" value="1" class="w-full">
@@ -332,7 +332,7 @@
                     </div>
                     <ul class="space-y-4 mb-8 flex-grow text-gray-300">
                         <li><i class="fa-solid fa-check text-navblue mr-2"></i> 6 Months of Premium Access</li>
-                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> Section Control Algorithms</li>
+                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> Average Speed Algorithms</li>
                         <li><i class="fa-solid fa-check text-navblue mr-2"></i> HGV Dimension Routing</li>
                         <li class="opacity-50"><i class="fa-solid fa-xmark mr-2"></i> Standard pricing applies after 6mo</li>
                     </ul>
@@ -374,7 +374,7 @@
                     <ul class="space-y-4 mb-8 flex-grow text-gray-300">
                         <li><i class="fa-solid fa-check text-navblue mr-2"></i> 1 Full Year of Premium Access</li>
                         <li><i class="fa-solid fa-check text-navblue mr-2"></i> Beta Testing Access</li>
-                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> Section Control Algorithms</li>
+                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> Average Speed Algorithms</li>
                         <li class="opacity-50"><i class="fa-solid fa-xmark mr-2"></i> Standard pricing applies after 1yr</li>
                     </ul>
                     <button onclick="openCheckout('1-Year Pro', 250)" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 rounded-xl transition border border-white/20">
@@ -390,45 +390,45 @@
                         For Logistics Companies
                     </div>
                     <h3 class="text-3xl font-bold text-white mb-3">Fleet & Enterprise Packages</h3>
-                    <p class="text-gray-400 max-w-2xl mx-auto">Equip your entire fleet with the Section Control shield and get exclusive access to our Master Admin Dashboard to monitor all vehicles in real-time.</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Equip your entire fleet with our protective shield and get exclusive access to our Master Admin Dashboard to monitor all vehicles in real-time.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="glass-panel rounded-2xl p-8 border border-navblue/40 relative overflow-hidden group hover:border-navblue transition-colors duration-300">
                         <div class="absolute top-0 right-0 bg-navblue text-black font-bold px-4 py-1 rounded-bl-xl text-sm">Save £2,500</div>
                         <h4 class="text-2xl font-bold text-white mb-2">Fleet Starter</h4>
-                        <p class="text-navblue font-semibold mb-6">Up to 10 Trucks</p>
+                        <p class="text-navblue font-semibold mb-6">Up to 10 HGVs</p>
                         
                         <div class="mb-6">
                             <span class="text-5xl font-black text-white">£5,000</span>
                         </div>
                         
                         <ul class="space-y-3 text-gray-300 mb-8">
-                            <li><i class="fa-solid fa-users-gear text-navblue mr-2"></i> <strong>10x 50% Lifetime Licenses</strong></li>
+                            <li><i class="fa-solid fa-users-gear text-navblue mr-2"></i> <strong>10x 50% Lifetime Licences</strong></li>
                             <li><i class="fa-solid fa-desktop text-navblue mr-2"></i> Admin Dashboard Access</li>
-                            <li><i class="fa-solid fa-file-invoice text-navblue mr-2"></i> Centralized Billing</li>
+                            <li><i class="fa-solid fa-file-invoice text-navblue mr-2"></i> Centralised Billing</li>
                         </ul>
                         <button onclick="openCheckout('Fleet Starter (10 Trucks)', 5000)" class="w-full bg-navblue/20 hover:bg-navblue text-white hover:text-black font-bold py-3 rounded-xl transition border border-navblue/50">
-                            Claim 10-Truck Fleet
+                            Claim 10-HGV Fleet
                         </button>
                     </div>
 
                     <div class="glass-panel rounded-2xl p-8 border border-navgreen/40 relative overflow-hidden group hover:border-navgreen transition-colors duration-300">
                         <div class="absolute top-0 right-0 bg-navgreen text-black font-bold px-4 py-1 rounded-bl-xl text-sm">Save £17,500</div>
                         <h4 class="text-2xl font-bold text-white mb-2">Fleet Pro</h4>
-                        <p class="text-navgreen font-semibold mb-6">Up to 50 Trucks</p>
+                        <p class="text-navgreen font-semibold mb-6">Up to 50 HGVs</p>
                         
                         <div class="mb-6">
                             <span class="text-5xl font-black text-white">£20,000</span>
                         </div>
                         
                         <ul class="space-y-3 text-gray-300 mb-8">
-                            <li><i class="fa-solid fa-users-gear text-navgreen mr-2"></i> <strong>50x 50% Lifetime Licenses</strong></li>
+                            <li><i class="fa-solid fa-users-gear text-navgreen mr-2"></i> <strong>50x 50% Lifetime Licences</strong></li>
                             <li><i class="fa-solid fa-desktop text-navgreen mr-2"></i> Admin Dashboard Access</li>
                             <li><i class="fa-solid fa-headset text-navgreen mr-2"></i> Dedicated Account Manager</li>
                         </ul>
                         <button onclick="openCheckout('Fleet Pro (50 Trucks)', 20000)" class="w-full bg-navgreen/20 hover:bg-navgreen text-white hover:text-black font-bold py-3 rounded-xl transition border border-navgreen/50">
-                            Claim 50-Truck Fleet
+                            Claim 50-HGV Fleet
                         </button>
                     </div>
                 </div>
@@ -436,8 +436,8 @@
                 <div class="mt-8 glass-panel p-6 md:p-8 rounded-2xl border border-white/10 flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-cardbg to-darkbg">
                     <div class="md:w-2/3 md:pr-8 mb-6 md:mb-0 text-center md:text-left">
                         <h4 class="text-xl font-bold text-white mb-2"><i class="fa-solid fa-circle-question text-navblue mr-2"></i> Custom Fleet Size?</h4>
-                        <p class="text-gray-400 mb-3">Have 12, 25, or 42 trucks? Select the closest base package above. In the secure checkout window, simply enter your exact fleet size. Extra licenses are calculated at our wholesale rate of just <strong class="text-navgreen">£450 per additional truck</strong>.</p>
-                        <p class="text-gray-300"><strong class="text-navblue">Managing more than 50 trucks?</strong> We offer dedicated API integrations and volume pricing for large logistics enterprises. Contact us directly.</p>
+                        <p class="text-gray-400 mb-3">Have 12, 25, or 42 HGVs? Select the closest base package above. In the secure checkout window, simply enter your exact fleet size. Extra licences are calculated at our wholesale rate of just <strong class="text-navgreen">£450 per additional vehicle</strong>.</p>
+                        <p class="text-gray-300"><strong class="text-navblue">Managing more than 50 HGVs?</strong> We offer dedicated API integrations and volume pricing for large logistics enterprises. Contact us directly.</p>
                     </div>
                     <div class="md:w-1/3 text-center md:text-right w-full">
                         <a href="mailto:enterprise@logipark.co.uk" class="inline-block w-full md:w-auto bg-transparent hover:bg-white/5 text-white font-semibold py-3 px-6 rounded-xl transition border border-white/20">
@@ -473,7 +473,7 @@
                 </div>
 
                 <form id="pledgeForm" onsubmit="handleCheckoutSubmit(event)">
-                    <div class="mb-8">
+                    <div class="mb-6">
                         <h4 class="text-white font-semibold mb-4 border-b border-white/10 pb-2"><i class="fa-regular fa-id-card text-navgreen mr-2"></i> Client Information</h4>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -493,10 +493,16 @@
                                 <input type="text" id="clientCompany" class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="Logistics Ltd.">
                             </div>
                             <div>
-                                <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Number of Trucks *</label>
+                                <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Number of HGVs *</label>
                                 <input type="number" min="1" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition" value="1" id="checkoutTrucks">
                             </div>
                         </div>
+                    </div>
+
+                    <div id="checkoutErrorBox" class="hidden bg-red-500/10 border border-red-500/50 rounded-lg p-3 mb-6">
+                        <p id="checkoutErrorMessage" class="text-red-400 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-triangle-exclamation"></i> <span>Error message</span>
+                        </p>
                     </div>
 
                     <div class="space-y-3">
@@ -516,19 +522,23 @@
     <footer class="border-t border-white/10 bg-cardbg pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div class="col-span-1 md:col-span-2">
+                <div class="col-span-1 md:col-span-2 pr-0 md:pr-10">
                     <div class="flex items-center gap-2 mb-4">
                         <i class="fa-solid fa-route text-navblue text-2xl"></i>
                         <span class="font-bold text-2xl tracking-tight">LogiPark <span class="text-navblue">Tech</span></span>
                     </div>
-                    <p class="text-gray-400 max-w-sm">Driving logistics forward. Patent pending algorithms saving drivers millions in unjustified fines.</p>
+                    <p class="text-gray-400 mb-6">Driving logistics forward. Our patent-pending algorithms are designed to save drivers millions in unjustified fines.</p>
+                    <div class="border-l-2 border-navblue pl-4">
+                        <p class="text-sm text-gray-300 italic mb-2">"Our mission is to protect drivers and optimise fleets globally, putting the control back in your hands."</p>
+                        <p class="text-xs font-bold text-navblue uppercase tracking-wider">— Nazar Zablotskyi, Founder (Provisinal Patent holder</p>
+                    </div>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Campaign</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-navblue transition">The Mission</a></li>
-                        <li><a href="#" class="hover:text-navblue transition">Stretch Goals</a></li>
-                        <li><a href="#" class="hover:text-navblue transition">Rewards</a></li>
+                        <li><a href="#mission" class="hover:text-navblue transition">The Mission</a></li>
+                        <li><a href="#roi" class="hover:text-navblue transition">Stretch Goals</a></li>
+                        <li><a href="#rewards" class="hover:text-navblue transition">Rewards & Tiers</a></li>
                     </ul>
                 </div>
                 <div>
@@ -541,7 +551,7 @@
                 </div>
             </div>
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 text-sm">© 2026 LogiPark Technologies Ltd. All rights reserved. | Patent Pending (USPTO & UK IPO).</p>
+                <p class="text-gray-500 text-sm text-center md:text-left">© 2026 LogiPark Technologies Ltd. All rights reserved. | Patent Pending (USPTO & UK IPO).</p>
                 <div class="flex space-x-4 mt-4 md:mt-0">
                     <a href="#" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-x-twitter text-xl"></i></a>
                     <a href="#" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
@@ -615,6 +625,9 @@
         const checkoutPrice = document.getElementById('checkoutPrice');
         const checkoutSubmitBtn = document.getElementById('checkoutSubmitBtn');
         const checkoutTrucks = document.getElementById('checkoutTrucks');
+        const errorBox = document.getElementById('checkoutErrorBox');
+        const errorMessage = document.getElementById('checkoutErrorMessage');
+        
         let currentSelectedPrice = 0;
         let currentTierName = '';
 
@@ -625,6 +638,8 @@
             checkoutTierName.innerText = tierName;
             checkoutPrice.innerText = '£' + price.toLocaleString('en-GB');
             checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-lock text-sm"></i> Proceed to Secure Payment (£' + price.toLocaleString('en-GB') + ')';
+            
+            errorBox.classList.add('hidden');
             
             if(tierName.includes('10 Trucks')) checkoutTrucks.value = 10;
             else if(tierName.includes('50 Trucks')) checkoutTrucks.value = 50;
@@ -639,10 +654,12 @@
             modal.classList.add('hidden');
             modal.classList.remove('flex');
             document.body.style.overflow = 'auto';
+            errorBox.classList.add('hidden');
         }
 
         function handleCheckoutSubmit(e) {
             e.preventDefault();
+            errorBox.classList.add('hidden');
             
             const name = document.getElementById('clientName').value;
             const email = document.getElementById('clientEmail').value;
@@ -652,26 +669,31 @@
             
             let stripePaymentLink = "";
             
+            // Replace these with your actual LIVE Stripe Payment Links before launch
             if(currentSelectedPrice === 100) {
-                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля100";
+                stripePaymentLink = ""; // e.g., "https://buy.stripe.com/YOUR_LINK_100"
             } else if(currentSelectedPrice === 250) {
-                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля250";
+                stripePaymentLink = ""; 
             } else if(currentSelectedPrice === 750) {
-                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля750";
+                stripePaymentLink = ""; 
             } else if(currentSelectedPrice === 5000) {
-                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля5000";
+                stripePaymentLink = ""; 
             } else if(currentSelectedPrice === 20000) {
-                stripePaymentLink = "https://buy.stripe.com/test_ВашЛінкДля20000";
+                stripePaymentLink = ""; 
             }
 
             setTimeout(() => {
                 if(stripePaymentLink !== "") {
                     window.location.href = stripePaymentLink + "?prefilled_email=" + encodeURIComponent(email);
                 } else {
-                    alert("Stripe links are not configured yet. Name: " + name + " | Tier: " + currentTierName);
-                    closeCheckout();
+                    // Modern error handling instead of alert()
+                    errorMessage.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> <span>Stripe integration pending. Cannot process £' + currentSelectedPrice + ' tier for ' + name + ' yet.</span>';
+                    errorBox.classList.remove('hidden');
+                    
+                    // Reset button
+                    checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-lock text-sm"></i> Proceed to Secure Payment (£' + currentSelectedPrice.toLocaleString('en-GB') + ')';
                 }
-            }, 1000);
+            }, 800);
         }
 
         modal.addEventListener('click', function(e) {
