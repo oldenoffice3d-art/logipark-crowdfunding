@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogiPark | Product Ecosystem Demo</title>
+    <title>NavAppRoutes | The Crowdfunding Revolution</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -11,11 +11,12 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Urbanist', 'sans-serif'] },
+                    fontFamily: {
+                        sans: ['Urbanist', 'sans-serif'],
+                    },
                     colors: {
                         navblue: '#00d4ff',
                         navgreen: '#00ff66',
-                        navamber: '#f59e0b',
                         darkbg: '#050810',
                         cardbg: '#0b111e',
                     }
@@ -24,312 +25,777 @@
         }
     </script>
     <style>
-        body { background-color: #050810; color: #ffffff; overflow-x: hidden; }
-        .glass-panel { background: rgba(11, 17, 30, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .btn-active { background-color: #00d4ff !important; color: #000 !important; }
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); opacity: 0.5; }
-            50% { transform: scale(1); opacity: 0.2; }
-            100% { transform: scale(0.95); opacity: 0.5; }
+        body {
+            background-color: #050810;
+            color: #ffffff;
+            overflow-x: hidden;
         }
-        .hazard-ring { animation: pulse-ring 2s infinite ease-in-out; }
-        .shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent); background-size: 200% 100%; animation: shimmer 2s infinite; }
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        .glass-panel {
+            background: rgba(11, 17, 30, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-text-green {
+            text-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+        }
+        .neon-text-blue {
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #00d4ff, #00ff66);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        }
+        
+        /* Default Slider Styles (First Calculator) */
+        input[type=range].standard-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range].standard-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background: #00d4ff;
+            cursor: pointer;
+            margin-top: -10px;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+        }
+        input[type=range].standard-slider::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #1f2937;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Enterprise Slider Styles (Second Calculator) */
+        input[type=range].enterprise-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range].enterprise-slider::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #1E293B;
+            border-radius: 2px;
+        }
+        input[type=range].enterprise-slider::-webkit-slider-thumb {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #00ff66; /* navgreen */
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -10px;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+        }
+
+        .truck-watermark {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            opacity: 0.03;
+            font-size: 250px;
+            pointer-events: none;
+            color: #00d4ff;
+            transform: rotate(-5deg);
+        }
+
+        .modal-enter {
+            animation: modalFadeIn 0.3s ease-out forwards;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
     </style>
 </head>
-<body class="antialiased p-4 md:p-8">
+<body class="antialiased selection:bg-navgreen selection:text-black relative">
 
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mb-8 border-b border-white/10 pb-6 gap-6">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-navblue rounded-xl flex items-center justify-center text-black">
-                <i class="fa-solid fa-shield-halved text-xl"></i>
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <i class="fa-solid fa-route text-navblue text-2xl"></i>
+                    <span class="font-bold text-2xl tracking-tight">NavApp<span class="text-navblue">Routes</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#mission" class="text-gray-300 hover:text-white transition">The Mission</a>
+                    <a href="#roi" class="text-gray-300 hover:text-white transition">The Exponential ROI</a>
+                    <a href="#calculator" class="text-gray-300 hover:text-white transition">Calculator</a>
+                    <a href="#rewards" class="text-navgreen font-semibold hover:text-white transition">Back the Project</a>
+                </div>
+                <div>
+                    <a href="#rewards" class="bg-navgreen text-black font-bold px-6 py-2 rounded-full hover:bg-white transition shadow-[0_0_15px_rgba(0,255,102,0.4)]">Pre-Order Now</a>
+                </div>
             </div>
-            <h1 class="text-2xl font-black uppercase tracking-tighter">LogiPark <span class="text-navblue">Tech</span></h1>
         </div>
-        
-        <!-- View Toggler -->
-        <div class="flex bg-cardbg rounded-xl p-1.5 border border-white/5 shadow-inner">
-            <button onclick="switchView('driver')" id="btn-driver" class="px-6 py-2.5 rounded-lg text-xs font-black uppercase transition btn-active">
-                Driver Pager (A)
-            </button>
-            <button onclick="switchView('admin')" id="btn-admin" class="px-6 py-2.5 rounded-lg text-xs font-black uppercase transition text-gray-500 hover:text-white">
-                Admin-Map (B)
-            </button>
-        </div>
-    </div>
+    </nav>
 
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <!-- Main Simulation Display -->
-        <div class="lg:col-span-2 space-y-8">
+    <div class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden" id="mission">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-navblue/20 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-navgreen/10 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-navblue/30 bg-navblue/10 text-navblue font-semibold text-sm uppercase tracking-wider">
+                Built by Drivers. For Drivers. No VC Investors.
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                Stop Feeding the <br>
+                <span class="gradient-text">Speed Trap System.</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 mb-10">
+                The world's first patent-pending HGV navigation app with dynamic Average Speed (Section Control) tracking. Save £52,000 annually. Keep your hard-earned money.
+            </p>
             
-            <!-- MODULE A: DRIVER VIEW -->
-            <div id="view-driver" class="glass-panel rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
-                <div id="enforcement-bar" class="absolute top-0 left-0 w-full h-1 bg-navamber hidden animate-pulse"></div>
+            <div class="max-w-3xl mx-auto glass-panel rounded-2xl p-8 mb-12 border border-navblue/30 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-navblue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute top-0 right-0 bg-navblue text-black text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide">
+                    Live Status
+                </div>
                 
-                <div class="flex justify-between items-start mb-16">
+                <div class="flex justify-between text-left mb-4 relative z-10">
                     <div>
-                        <p class="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-1">Navigation Status</p>
-                        <h2 id="status-text" class="text-xl font-bold flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-navgreen"></i>
-                            CRUISING
-                        </h2>
+                        <p class="text-gray-400 text-sm uppercase tracking-wider mb-1">Co-Founder Spots Filled</p>
+                        <p class="text-3xl md:text-4xl font-bold text-white"><span id="trackerFilled">0</span> <span class="text-lg text-gray-400 font-normal tracking-normal">Drivers Onboard</span></p>
                     </div>
                     <div class="text-right">
-                        <p class="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-1">Driver Trust Score</p>
-                        <p id="trust-display" class="text-3xl font-black text-navgreen">98.5%</p>
+                        <p class="text-gray-400 text-sm uppercase tracking-wider mb-1">Total Capacity</p>
+                        <p class="text-2xl font-semibold text-navblue">6,833 Spots</p>
                     </div>
                 </div>
-
-                <div class="flex flex-col items-center justify-center py-10 relative">
-                    <!-- Gauge Circle -->
-                    <div class="relative w-64 h-64 flex items-center justify-center border-[6px] border-white/5 rounded-full">
-                        <div id="hazard-ring" class="absolute inset-0 border-4 border-red-500 rounded-full hazard-ring opacity-0 transition-opacity"></div>
-                        <div class="text-center z-10">
-                            <p id="speed-val" class="text-7xl font-black tracking-tighter">58</p>
-                            <p class="text-gray-500 font-bold text-sm uppercase tracking-widest">mph</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-12 grid grid-cols-2 gap-6 w-full max-w-sm">
-                        <div class="bg-white/5 p-5 rounded-2xl border border-white/5 text-center">
-                            <p class="text-[10px] text-gray-500 uppercase font-black mb-1 tracking-widest">Avg Speed</p>
-                            <p class="text-2xl font-bold"><span id="avg-speed-val">56</span> <span class="text-xs text-gray-600">mph</span></p>
-                        </div>
-                        <div class="bg-white/5 p-5 rounded-2xl border border-white/5 text-center">
-                            <p class="text-[10px] text-gray-500 uppercase font-black mb-1 tracking-widest">Target Curve</p>
-                            <p id="target-speed-val" class="text-2xl font-bold text-navgreen">56 <span class="text-xs text-gray-400">mph</span></p>
-                        </div>
+                
+                <div class="w-full bg-gray-800 rounded-full h-4 mb-4 relative z-10 shadow-inner overflow-hidden">
+                    <div id="trackerBar" class="bg-gradient-to-r from-navblue to-navgreen h-4 rounded-full relative transition-all duration-1000 ease-out" style="width: 0%">
+                        <div class="absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
                     </div>
                 </div>
-
-                <div class="mt-12 flex gap-4">
-                    <button onclick="adjustSpeed(-5)" class="flex-1 bg-white/5 hover:bg-white/10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition border border-white/10 active:scale-95">
-                        <i class="fa-solid fa-minus mr-2"></i> Brake
-                    </button>
-                    <button onclick="adjustSpeed(5)" class="flex-1 bg-navblue text-black py-5 rounded-2xl font-black uppercase text-xs tracking-widest transition hover:brightness-110 active:scale-95">
-                        Accelerate <i class="fa-solid fa-plus ml-2"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- MODULE B: ADMIN VIEW -->
-            <div id="view-admin" class="glass-panel rounded-[2.5rem] p-8 md:p-12 shadow-2xl hidden">
-                <div class="flex justify-between items-center mb-10">
-                    <div>
-                        <h2 class="text-2xl font-black uppercase tracking-tighter">Fleet Control Center</h2>
-                        <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Real-time Asset Prioritization</p>
-                    </div>
-                    <span class="bg-navgreen/10 text-navgreen border border-navgreen/20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">
-                        <i class="fa-solid fa-satellite-dish mr-2 animate-pulse"></i> 3 Active Nodes
+                
+                <div class="flex justify-between text-sm md:text-base font-medium relative z-10">
+                    <span class="text-gray-300"><strong class="text-white" id="trackerPercent">0.0%</strong> Capacity Reached</span>
+                    <span class="text-navgreen flex items-center gap-2">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-navgreen opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-navgreen"></span>
+                        </span>
+                        <strong><span id="trackerRemaining">6,833</span></strong> Spots Remaining
                     </span>
                 </div>
                 
-                <div class="space-y-4" id="fleet-list">
-                    <!-- Dynamic Node Rows -->
-                    <div class="bg-white/5 border border-white/10 p-5 rounded-2xl flex items-center justify-between group hover:border-navblue/50 transition">
-                        <div class="flex items-center gap-5">
-                            <div id="node-772-icon" class="w-12 h-12 rounded-xl flex items-center justify-center bg-navblue/20 text-navblue">
-                                <i class="fa-solid fa-truck"></i>
-                            </div>
-                            <div>
-                                <p class="font-black text-sm uppercase">LGP-772 <span class="text-[10px] text-gray-600 ml-2">DAF XF</span></p>
-                                <p id="node-772-status" class="text-[10px] uppercase font-black text-gray-500">Stable - En Route</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-[10px] text-gray-600 uppercase font-black mb-1">Trust Score</p>
-                            <p id="node-772-score" class="font-black text-lg">98.5%</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-white/5 border border-white/10 p-5 rounded-2xl flex items-center justify-between opacity-60">
-                        <div class="flex items-center gap-5">
-                            <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-800 text-gray-400">
-                                <i class="fa-solid fa-truck"></i>
-                            </div>
-                            <div>
-                                <p class="font-black text-sm uppercase">LGP-104 <span class="text-[10px] text-gray-700 ml-2">Scania S</span></p>
-                                <p class="text-[10px] uppercase font-black text-gray-600">Stable - Idling</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-[10px] text-gray-700 uppercase font-black mb-1">Trust Score</p>
-                            <p class="font-black text-lg">99.8%</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Scalability Stats Card -->
-                <div class="mt-10 p-6 bg-navblue/5 rounded-2xl border border-navblue/20 flex flex-col md:flex-row items-center gap-6 shimmer">
-                    <div class="w-14 h-14 bg-navblue text-black rounded-full flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-database text-xl"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-black uppercase text-sm tracking-tight text-navblue">Edge Processing Engine Active</h4>
-                        <p class="text-xs text-gray-400 leading-relaxed uppercase mt-1">Processing 1,240 telemetry pings/sec with <strong class="text-white">sub-50ms</strong> backplane latency. PostGIS indexing optimal.</p>
-                    </div>
+                <div class="mt-5 pt-4 border-t border-white/10 relative z-10 text-xs text-gray-400 text-center">
+                    <i class="fa-solid fa-circle-info text-navblue mr-1"></i> Core £5.1M funding is tracked exclusively via the <strong class="text-white">£750 Lifetime Co-Founder</strong> tier. <br class="hidden sm:block">Contributions from short-term £100/£250 tiers flow directly into unlocking Community Stretch Goals.
                 </div>
             </div>
 
-        </div>
-
-        <!-- Sidebar: Global Controls -->
-        <div class="space-y-6">
-            <div class="glass-panel rounded-3xl p-6 border border-white/10">
-                <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-6">Environment Control</h3>
-                <button onclick="toggleZone()" id="zone-toggle-btn" class="w-full py-4 rounded-xl font-black uppercase text-[10px] tracking-widest transition border border-white/10 bg-white/5 text-white hover:bg-white/10 active:scale-95">
-                    <i class="fa-solid fa-camera mr-2"></i> Simulate Camera Zone
-                </button>
-                <p class="text-[9px] text-gray-600 uppercase font-bold mt-4 text-center">Triggers Module A & B Logic</p>
-            </div>
-
-            <div class="glass-panel rounded-3xl p-6 border border-white/10">
-                <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-6 flex justify-between">
-                    Real-time Logs 
-                    <span class="text-navblue">Module B</span>
-                </h3>
-                <div id="log-container" class="space-y-3 max-h-64 overflow-y-auto pr-2">
-                    <div class="flex gap-3 animate-pulse">
-                        <span class="text-[8px] text-gray-700 mt-1">09:00:00</span>
-                        <p class="text-[10px] font-black text-gray-500 uppercase">Awaiting incoming nodes...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ROI Preview Sidebar Item -->
-            <div class="glass-panel rounded-3xl p-6 border border-navgreen/20 bg-navgreen/5">
-                <p class="text-[10px] font-black text-navgreen uppercase tracking-widest mb-2">Live Yield Performance</p>
-                <div class="flex justify-between items-end">
-                    <span class="text-2xl font-black">101%</span>
-                    <span class="text-[9px] font-bold text-gray-500 uppercase">Immediate ROI</span>
-                </div>
+            <div class="flex justify-center flex-wrap gap-4">
+                <a href="#rewards" class="bg-navblue text-black font-bold px-8 py-4 rounded-full text-lg hover:bg-white transition flex items-center gap-2 shadow-[0_0_20px_rgba(0,212,255,0.4)]">
+                    <i class="fa-solid fa-rocket"></i> View Backer Rewards
+                </a>
+                <a href="#demo" class="glass-panel text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-white/10 transition flex items-center gap-2">
+                    <i class="fa-solid fa-play"></i> Watch Demo
+                </a>
             </div>
         </div>
-
     </div>
 
+    <div id="demo" class="py-24 relative border-t border-white/5 bg-darkbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">See It In <span class="text-navblue">Action</span></h2>
+                <p class="text-xl text-gray-400">Watch how our patent-pending Deterministic Latency Reduction algorithm protects you in real-time Average Speed Camera zones.</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto mb-12 relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-navblue to-navgreen rounded-2xl blur opacity-30"></div>
+                <div class="relative aspect-video glass-panel rounded-2xl overflow-hidden border border-white/10 bg-black shadow-2xl">
+                    <!-- Placeholder for video -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-gray-900">
+                        <i class="fa-brands fa-youtube text-6xl text-gray-700"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass-panel rounded-xl overflow-hidden aspect-[9/16] relative group border border-white/10">
+                    <div class="absolute inset-0 bg-navgreen/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <span class="bg-black/80 text-white px-4 py-2 rounded-lg text-sm font-bold">3D Driver View</span>
+                    </div>
+                    <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                        <i class="fa-solid fa-mobile-screen text-4xl text-gray-600"></i>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden aspect-[9/16] relative group border border-white/10 md:mt-8">
+                    <div class="absolute inset-0 bg-navblue/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <span class="bg-black/80 text-white px-4 py-2 rounded-lg text-sm font-bold">HGV Profile Setup</span>
+                    </div>
+                    <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                        <i class="fa-solid fa-truck text-4xl text-gray-600"></i>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden aspect-[9/16] relative group border border-white/10">
+                    <div class="absolute inset-0 bg-navgreen/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <span class="bg-black/80 text-white px-4 py-2 rounded-lg text-sm font-bold">£52k Savings Dash</span>
+                    </div>
+                    <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                        <i class="fa-solid fa-chart-line text-4xl text-gray-600"></i>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden aspect-[9/16] relative group border border-white/10 md:mt-8">
+                    <div class="absolute inset-0 bg-navblue/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <span class="bg-black/80 text-white px-4 py-2 rounded-lg text-sm font-bold">Smart Mini-Widget</span>
+                    </div>
+                    <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                        <i class="fa-solid fa-layer-group text-4xl text-gray-600"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="roi" class="py-24 bg-cardbg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">The <span class="text-navgreen">Exponential</span> ROI</h2>
+                    <p class="text-xl text-gray-300 mb-6">Our £5.1M launch goal relies entirely on exactly 6,833 Elite Co-Founders pledging £750. This limited group will unlock an unprecedented financial advantage on the road.</p>
+                    
+                    <div class="glass-panel border-l-4 border-l-navgreen p-6 rounded-r-xl mb-8">
+                        <h4 class="text-xl font-bold text-navgreen mb-2">The Maths: £750 vs. Half a Million</h4>
+                        <p class="text-lg text-gray-200">An initial investment of just £750 secures you a <strong class="text-white">50% Lifetime Discount</strong> on our platform. Because the app saves you £52,000 annually, your return exceeds your pledge by <strong class="text-white">thousands of times</strong> over your career.</p>
+                    </div>
+
+                    <p class="text-gray-400 mb-4"><i class="fa-solid fa-check text-navgreen mr-2"></i> Prevents an estimated £52,000 in unjustified fines annually.</p>
+                    <p class="text-gray-400 mb-4"><i class="fa-solid fa-check text-navgreen mr-2"></i> Saves £520,000 over 10 years (The equivalent of a paid-off family home).</p>
+                    <p class="text-gray-400"><i class="fa-solid fa-check text-navgreen mr-2"></i> Dynamic recommended speed updates every 100ms.</p>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-navgreen/20 blur-[80px] rounded-full"></div>
+                    <div class="glass-panel rounded-2xl p-10 text-center relative border border-navgreen/30">
+                        <i class="fa-solid fa-house-chimney text-6xl text-navgreen mb-6"></i>
+                        <h3 class="text-6xl font-black text-white mb-2 tracking-tighter">£520,000</h3>
+                        <p class="text-2xl font-semibold text-navgreen uppercase tracking-widest mb-4">Saved every 10 years</p>
+                        <p class="text-gray-400">That's not just business savings. That's a mortgage-free house for your family, secured simply by investing early and driving smarter.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="calculator" class="py-20 relative bg-darkbg border-y border-white/5">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Calculate Your Fleet's <span class="text-navblue">Savings</span></h2>
+                <p class="text-gray-400">Scale your protection. The more HGVs you protect, the more you save.</p>
+            </div>
+
+            <div class="glass-panel rounded-3xl p-8 md:p-12 border border-navblue/20 shadow-[0_0_50px_rgba(0,212,255,0.05)] relative overflow-hidden">
+                <div class="truck-watermark">
+                    <i class="fa-solid fa-truck"></i>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
+                    <!-- Left: Slider & Unit Price -->
+                    <div>
+                        <div class="flex justify-between items-end mb-4">
+                            <span class="text-gray-400 uppercase tracking-wider text-sm font-bold">Total HGVs</span>
+                            <span id="uniTruckCount" class="text-5xl font-black text-navblue">1</span>
+                        </div>
+                        <input type="range" id="uniSlider" min="0" max="21" value="0" class="enterprise-slider mb-2" oninput="updateUnifiedCalculator(this.value)">
+                        <div class="flex justify-between text-xs text-gray-500 font-bold mb-8">
+                            <span>1</span>
+                            <span>50</span>
+                            <span>200</span>
+                            <span>500+</span>
+                        </div>
+
+                        <div class="bg-black/40 border border-white/5 rounded-2xl p-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-400">Price Per Truck</span>
+                                <div class="text-right">
+                                    <span id="uniOldUnitPrice" class="text-sm text-gray-500 line-through mr-2">£1,500</span>
+                                    <span id="uniUnitPrice" class="text-2xl font-bold text-white">£750</span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-1.5 mb-3 overflow-hidden">
+                                <div id="uniDiscountBar" class="bg-gradient-to-r from-navblue to-navgreen h-1.5 rounded-full transition-all duration-500" style="width: 50%"></div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-tags text-navblue text-sm"></i>
+                                <span id="uniDiscountText" class="text-navblue text-sm font-bold uppercase tracking-wide">
+                                    50% Founder Discount Applied
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Total Investment & ROI -->
+                    <div class="space-y-6">
+                        <div class="bg-navblue/5 rounded-2xl p-6 border border-navblue/20">
+                            <h4 class="text-gray-400 font-semibold mb-2 text-sm uppercase tracking-wider">Total Investment</h4>
+                            <div class="flex justify-between items-end">
+                                <span id="uniTotalOldPrice" class="text-lg text-gray-500 line-through">£1,500</span>
+                                <span id="uniTotalPrice" class="text-4xl font-black text-navblue">£750</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-navgreen/10 rounded-2xl p-6 border border-navgreen/30 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-navgreen/20 rounded-full blur-[40px] -mr-10 -mt-10"></div>
+                            <h4 class="text-navgreen font-bold mb-2 text-sm uppercase tracking-wider relative z-10">10-Year ROI (Fines Prevented)</h4>
+                            <div class="flex justify-between items-end relative z-10">
+                                <span class="text-sm text-gray-300">Annual: <br><span id="uniAnnualSavings" class="font-bold text-white text-lg">£52,000</span></span>
+                                <span id="uniTenYearSavings" class="text-4xl font-black text-white neon-text-green">£520,000</span>
+                            </div>
+                        </div>
+
+                        <button id="uniClaimBtn" onclick="processUnifiedCheckout()" class="w-full bg-navgreen hover:bg-white text-black font-extrabold py-4 rounded-xl text-lg mt-4 transition-all shadow-[0_0_15px_rgba(0,255,102,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] active:scale-95 flex justify-center items-center gap-2">
+                            <i class="fa-solid fa-lock text-sm"></i> Claim Protection For 1 HGV
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="rewards" class="py-24 relative overflow-hidden bg-cardbg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Choose Your <span class="text-navblue">Reward</span></h2>
+                <p class="text-xl text-gray-400">Post-campaign, NavAppRoutes will launch at £89.97/month. Lock in your exclusive early-adopter pricing now and claim your permanent discount.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <div class="glass-panel rounded-2xl p-8 border border-white/10 flex flex-col pricing-card transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-white mb-2">6-Month Shield</h3>
+                    <p class="text-gray-400 mb-6 min-h-[48px]">Perfect for independent drivers testing the waters.</p>
+                    <div class="mb-6">
+                        <span class="text-5xl font-black text-white">£100</span>
+                        <span class="text-gray-400 line-through ml-2">£539 value</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-gray-300">
+                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> 6 Months of Premium Access</li>
+                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> Average Speed Algorithms</li>
+                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> HGV Dimension Routing</li>
+                        <li class="opacity-50"><i class="fa-solid fa-xmark mr-2"></i> Standard pricing applies after 6mo</li>
+                    </ul>
+                    <button onclick="openCheckout('6-Month Shield', 100)" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 rounded-xl transition border border-white/20">
+                        Select Reward
+                    </button>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-8 border-2 border-navgreen relative flex flex-col pricing-card transition-all duration-300 transform md:-translate-y-4 shadow-[0_0_30px_rgba(0,255,102,0.15)]">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-navgreen text-black font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wide whitespace-nowrap">
+                        Limited to 6,833 Co-Founders
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2 mt-2">50% Lifetime Co-Founder</h3>
+                    <p class="text-navgreen mb-6 min-h-[48px] font-semibold">Secure your permanent advantage. Get 50% Off For Life.</p>
+                    <div class="mb-6">
+                        <span class="text-5xl font-black text-white">£750</span>
+                        <span class="text-gray-400 block mt-1 text-sm uppercase tracking-wider">One-time pledge today</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-gray-200">
+                        <li><i class="fa-solid fa-star text-navgreen mr-2"></i> <strong>50% Permanent Discount</strong> (Pay only £44.98/mo forever)</li>
+                        <li><i class="fa-solid fa-check text-navgreen mr-2"></i> 1st Year Included Free</li>
+                        <li><i class="fa-solid fa-check text-navgreen mr-2"></i> Guaranteed Rate Lock</li>
+                        <li><i class="fa-solid fa-check text-navgreen mr-2"></i> Priority Support Line</li>
+                        <li><i class="fa-solid fa-award text-navgreen mr-2"></i> Name in "Co-Founders" Credits</li>
+                    </ul>
+                    <button onclick="openCheckout('50% Lifetime Co-Founder', 750)" class="w-full bg-navgreen hover:bg-white text-black font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(0,255,102,0.3)] text-lg">
+                        Claim 50% Lifetime Status
+                    </button>
+                    <p class="text-center text-xs text-gray-400 mt-3">Only <span id="tierRemainingSpots">6,833</span> spots left</p>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-8 border border-white/10 flex flex-col pricing-card transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-white mb-2">1-Year Pro</h3>
+                    <p class="text-gray-400 mb-6 min-h-[48px]">Maximum short-term value for contract drivers.</p>
+                    <div class="mb-6">
+                        <span class="text-5xl font-black text-white">£250</span>
+                        <span class="text-gray-400 line-through ml-2">£1,079 value</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow text-gray-300">
+                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> 1 Full Year of Premium Access</li>
+                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> Beta Testing Access</li>
+                        <li><i class="fa-solid fa-check text-navblue mr-2"></i> Average Speed Algorithms</li>
+                        <li class="opacity-50"><i class="fa-solid fa-xmark mr-2"></i> Standard pricing applies after 1yr</li>
+                    </ul>
+                    <button onclick="openCheckout('1-Year Pro', 250)" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 rounded-xl transition border border-white/20">
+                        Select Reward
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="max-w-6xl mx-auto mt-16">
+                <div class="text-center mb-10">
+                    <div class="inline-block bg-navblue/20 text-navblue text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4 border border-navblue/30">
+                        For Logistics Companies
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-3">Fleet & Enterprise Packages</h3>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Equip your entire fleet with our protective shield and get exclusive access to our Master Admin Dashboard to monitor all vehicles in real-time.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="glass-panel rounded-2xl p-8 border border-navblue/40 relative overflow-hidden group hover:border-navblue transition-colors duration-300">
+                        <div class="absolute top-0 right-0 bg-navblue text-black font-bold px-4 py-1 rounded-bl-xl text-sm">Save £2,500</div>
+                        <h4 class="text-2xl font-bold text-white mb-2">Fleet Starter</h4>
+                        <p class="text-navblue font-semibold mb-6">Up to 10 HGVs</p>
+                        
+                        <div class="mb-6">
+                            <span class="text-5xl font-black text-white">£5,000</span>
+                        </div>
+                        
+                        <ul class="space-y-3 text-gray-300 mb-8">
+                            <li><i class="fa-solid fa-users-gear text-navblue mr-2"></i> <strong>10x 50% Lifetime Licences</strong></li>
+                            <li><i class="fa-solid fa-desktop text-navblue mr-2"></i> Admin Dashboard Access</li>
+                            <li><i class="fa-solid fa-file-invoice text-navblue mr-2"></i> Centralised Billing</li>
+                        </ul>
+                        <button onclick="openCheckout('Fleet Starter (10 Trucks)', 5000)" class="w-full bg-navblue/20 hover:bg-navblue text-white hover:text-black font-bold py-3 rounded-xl transition border border-navblue/50">
+                            Claim 10-HGV Fleet
+                        </button>
+                    </div>
+
+                    <div class="glass-panel rounded-2xl p-8 border border-navgreen/40 relative overflow-hidden group hover:border-navgreen transition-colors duration-300">
+                        <div class="absolute top-0 right-0 bg-navgreen text-black font-bold px-4 py-1 rounded-bl-xl text-sm">Save £17,500</div>
+                        <h4 class="text-2xl font-bold text-white mb-2">Fleet Pro</h4>
+                        <p class="text-navgreen font-semibold mb-6">Up to 50 HGVs</p>
+                        
+                        <div class="mb-6">
+                            <span class="text-5xl font-black text-white">£20,000</span>
+                        </div>
+                        
+                        <ul class="space-y-3 text-gray-300 mb-8">
+                            <li><i class="fa-solid fa-users-gear text-navgreen mr-2"></i> <strong>50x 50% Lifetime Licences</strong></li>
+                            <li><i class="fa-solid fa-desktop text-navgreen mr-2"></i> Admin Dashboard Access</li>
+                            <li><i class="fa-solid fa-headset text-navgreen mr-2"></i> Dedicated Account Manager</li>
+                        </ul>
+                        <button onclick="openCheckout('Fleet Pro (50 Trucks)', 20000, 50)" class="w-full bg-navgreen/20 hover:bg-navgreen text-white hover:text-black font-bold py-3 rounded-xl transition border border-navgreen/50">
+                            Claim 50-HGV Fleet
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-[#0f172a] border border-white/10 rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden relative modal-enter">
+            <button onclick="closeCheckout()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <div class="p-8 md:p-10">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-white mb-2">Secure Your Spot</h3>
+                    <p class="text-gray-400 text-sm">You are backing LogiPark Technologies.</p>
+                </div>
+
+                <div class="bg-cardbg border border-navblue/30 rounded-xl p-4 mb-6 flex justify-between items-center shadow-[0_0_15px_rgba(0,212,255,0.1)]">
+                    <div>
+                        <p class="text-xs text-navblue uppercase tracking-wider font-bold mb-1">Selected Reward</p>
+                        <p id="checkoutTierName" class="text-white font-semibold text-lg">50% Lifetime Co-Founder</p>
+                    </div>
+                    <div class="text-right">
+                        <p id="checkoutPrice" class="text-2xl font-black text-white">£750</p>
+                    </div>
+                </div>
+
+                <form id="pledgeForm" onsubmit="handleCheckoutSubmit(event)">
+                    <div class="mb-6">
+                        <h4 class="text-white font-semibold mb-4 border-b border-white/10 pb-2"><i class="fa-regular fa-id-card text-navgreen mr-2"></i> Client Information</h4>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Full Name *</label>
+                                <input type="text" id="clientName" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Email Address *</label>
+                                <input type="email" id="clientEmail" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="john@example.com">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Company / Fleet Name (Optional)</label>
+                                <input type="text" id="clientCompany" class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition placeholder-gray-600" placeholder="Logistics Ltd.">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 uppercase tracking-wider mb-1">Number of HGVs *</label>
+                                <input type="number" min="1" required class="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-navblue focus:ring-1 focus:ring-navblue transition" value="1" id="checkoutTrucks">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="checkoutErrorBox" class="hidden bg-red-500/10 border border-red-500/50 rounded-lg p-3 mb-6">
+                        <p id="checkoutErrorMessage" class="text-red-400 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-triangle-exclamation"></i> <span>Error message</span>
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <button type="submit" id="checkoutSubmitBtn" class="w-full bg-navgreen hover:bg-white text-black font-bold py-4 rounded-xl transition shadow-[0_0_15px_rgba(0,255,102,0.3)] text-lg flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-lock text-sm"></i> Proceed to Secure Payment
+                        </button>
+                        <button type="button" onclick="closeCheckout()" class="w-full bg-transparent border border-white/20 hover:bg-white/10 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-arrow-left"></i> Return to Main Page
+                        </button>
+                    </div>
+                    <p class="text-center text-xs text-gray-500 mt-4"><i class="fa-solid fa-shield-halved"></i> You will be redirected to a secure Stripe payment gateway.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-t border-white/10 bg-cardbg pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-2 pr-0 md:pr-10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-route text-navblue text-2xl"></i>
+                        <span class="font-bold text-2xl tracking-tight">LogiPark <span class="text-navblue">Tech</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Driving logistics forward. Our patent-pending algorithms are designed to save drivers millions in unjustified fines.</p>
+                    <div class="border-l-2 border-navblue pl-4">
+                        <p class="text-sm text-gray-300 italic mb-2">"Our mission is to protect drivers and optimise fleets globally, putting the control back in your hands."</p>
+                        <p class="text-xs font-bold text-navblue uppercase tracking-wider">— Nazar Zablotskyi, Founder & CEO</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Campaign</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#mission" class="hover:text-navblue transition">The Mission</a></li>
+                        <li><a href="#roi" class="hover:text-navblue transition">Stretch Goals</a></li>
+                        <li><a href="#rewards" class="hover:text-navblue transition">Rewards & Tiers</a></li>
+                        <li><a href="#faq" class="hover:text-navblue transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#about" class="hover:text-navblue transition">About Us</a></li>
+                        <li><a href="mailto:contact@logipark.co.uk" class="hover:text-navblue transition">Contact Us</a></li>
+                        <li><a href="mailto:enterprise@logipark.co.uk" class="hover:text-navblue transition">Enterprise Sales</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase tracking-wider text-sm">Legal</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-navblue transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-navblue transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-navblue transition">Refund Policy</a></li>
+                        <li><a href="#" class="hover:text-navblue transition">Patent Info (UK IPO)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
+                <div class="text-gray-500 text-sm text-center md:text-left">
+                    <p class="mb-1">© 2026 LogiPark Technologies Ltd. All rights reserved. | Patent Pending (USPTO & UK IPO).</p>
+                    <p class="text-xs">Registered in England & Wales. Company No: 12345678. Registered Office: 124 City Road, London, EC1V 2NX, United Kingdom.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-x-twitter text-xl"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // State Management
-        let currentView = 'driver';
-        let speed = 58;
-        let avgSpeed = 56;
-        let targetSpeed = 56;
-        let isInsideZone = false;
-        let trustScore = 98.5;
-        let logCounter = 0;
+        // --- CAPACITY TRACKER LOGIC ---
+        const CURRENT_BACKERS = 0; 
+        const TOTAL_CAPACITY = 6833;
 
-        // View Switching
-        function switchView(view) {
-            currentView = view;
-            document.getElementById('view-driver').classList.toggle('hidden', view !== 'driver');
-            document.getElementById('view-admin').classList.toggle('hidden', view !== 'admin');
-            
-            document.getElementById('btn-driver').classList.toggle('btn-active', view === 'driver');
-            document.getElementById('btn-admin').classList.toggle('btn-active', view === 'admin');
-            
-            document.getElementById('btn-driver').classList.toggle('text-gray-500', view !== 'driver');
-            document.getElementById('btn-admin').classList.toggle('text-gray-500', view !== 'admin');
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const remainingSpots = TOTAL_CAPACITY - CURRENT_BACKERS;
+            let percent = (CURRENT_BACKERS / TOTAL_CAPACITY) * 100;
+            let displayPercent = CURRENT_BACKERS > 0 && percent < 1 ? 1 : percent;
 
-        // Speed Logic
-        function adjustSpeed(delta) {
-            speed = Math.max(0, Math.min(70, speed + delta));
-            updateUI();
-            addLog(`Speed adjusted to ${speed} mph`, 'info');
-        }
-
-        // Zone Toggle Logic
-        function toggleZone() {
-            isInsideZone = !isInsideZone;
-            const btn = document.getElementById('zone-toggle-btn');
-            const bar = document.getElementById('enforcement-bar');
-            const status = document.getElementById('status-text');
-            const hazard = document.getElementById('hazard-ring');
+            document.getElementById('trackerFilled').innerText = CURRENT_BACKERS.toLocaleString('en-GB');
+            document.getElementById('trackerRemaining').innerText = remainingSpots.toLocaleString('en-GB');
+            document.getElementById('tierRemainingSpots').innerText = remainingSpots.toLocaleString('en-GB');
+            document.getElementById('trackerPercent').innerText = percent.toFixed(1) + '%';
             
-            if(isInsideZone) {
-                btn.innerHTML = '<i class="fa-solid fa-road-barrier mr-2"></i> Exit Zone';
-                btn.classList.replace('bg-white/5', 'bg-navamber');
-                btn.classList.replace('text-white', 'text-black');
-                bar.classList.remove('hidden');
-                status.innerHTML = '<i class="fa-solid fa-radiation text-navamber animate-spin"></i> ENFORCEMENT ACTIVE';
-                addLog('ENTERING SECTION CONTROL: M1 SOUTH', 'warning');
-            } else {
-                btn.innerHTML = '<i class="fa-solid fa-camera mr-2"></i> Simulate Camera Zone';
-                btn.classList.replace('bg-navamber', 'bg-white/5');
-                btn.classList.replace('text-black', 'text-white');
-                bar.classList.add('hidden');
-                status.innerHTML = '<i class="fa-solid fa-circle-check text-navgreen"></i> CRUISING';
-                hazard.classList.add('opacity-0');
-                addLog('EXITING ENFORCEMENT ZONE', 'success');
-                addLog('SHA-256 HASH GENERATED: [8f3a...d2e1]', 'info');
+            setTimeout(() => {
+                document.getElementById('trackerBar').style.width = displayPercent + '%';
+            }, 500);
+
+            // Init unified calculator
+            updateUnifiedCalculator(0);
+        });
+
+        // --- UNIFIED CALCULATOR LOGIC (1-500+ Trucks) ---
+        const fleetSteps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30, 40, 50, 75, 100, 150, 200, 300, 400, 500];
+        let currentUnifiedCount = 1;
+        let currentUnifiedTotal = 750;
+
+        function updateUnifiedCalculator(sliderIndex) {
+            const count = fleetSteps[sliderIndex];
+            currentUnifiedCount = count;
+            
+            let unitPrice = 750;
+            let stdUnit = 1500;
+            let discount = 50;
+
+            if (count >= 10 && count < 50) {
+                unitPrice = 500;
+                stdUnit = 1079;
+                discount = 54;
+            } else if (count >= 50 && count < 100) {
+                unitPrice = 400;
+                stdUnit = 1079;
+                discount = 63;
+            } else if (count >= 100 && count < 300) {
+                unitPrice = 350;
+                stdUnit = 1079;
+                discount = 67;
+            } else if (count >= 300) {
+                unitPrice = 290;
+                stdUnit = 1079;
+                discount = 73;
             }
+
+            currentUnifiedTotal = count * unitPrice;
+            let stdTotal = count * stdUnit;
+            let annualSavings = count * 52000;
+            let tenYearSavings = annualSavings * 10;
+
+            // DOM Elements
+            document.getElementById('uniTruckCount').innerText = count + (count >= 500 ? '+' : '');
+            
+            document.getElementById('uniOldUnitPrice').innerText = '£' + stdUnit.toLocaleString('en-GB');
+            document.getElementById('uniUnitPrice').innerText = '£' + unitPrice.toLocaleString('en-GB');
+            
+            document.getElementById('uniTotalOldPrice').innerText = '£' + stdTotal.toLocaleString('en-GB');
+            document.getElementById('uniTotalPrice').innerText = '£' + currentUnifiedTotal.toLocaleString('en-GB');
+            
+            document.getElementById('uniAnnualSavings').innerText = '£' + annualSavings.toLocaleString('en-GB');
+            document.getElementById('uniTenYearSavings').innerText = '£' + tenYearSavings.toLocaleString('en-GB');
+            
+            document.getElementById('uniDiscountBar').style.width = discount + '%';
+            document.getElementById('uniDiscountText').innerText = count < 10 
+                ? `${discount}% Founder Discount Applied` 
+                : `${discount}% Volume Discount Applied`;
+                
+            document.getElementById('uniClaimBtn').innerHTML = `<i class="fa-solid fa-lock text-sm"></i> Claim Protection For ${count} ${count === 1 ? 'HGV' : 'HGVs'}`;
         }
 
-        // Core Loop (1 sec)
-        setInterval(() => {
-            if(isInsideZone) {
-                const diff = speed - targetSpeed;
-                if(diff > 2) {
-                    trustScore = Math.max(0, trustScore - 0.15);
-                    document.getElementById('hazard-ring').classList.remove('opacity-0');
+        function processUnifiedCheckout() {
+            let tierName = "";
+            if (currentUnifiedCount < 10) {
+                tierName = currentUnifiedCount === 1 ? "50% Lifetime Co-Founder" : `Co-Founder Batch (${currentUnifiedCount} Trucks)`;
+            } else if (currentUnifiedCount >= 10 && currentUnifiedCount < 50) {
+                tierName = `Fleet Starter (${currentUnifiedCount} Trucks)`;
+            } else if (currentUnifiedCount >= 50 && currentUnifiedCount < 100) {
+                tierName = `Fleet Pro (${currentUnifiedCount} Trucks)`;
+            } else {
+                tierName = `Enterprise Fleet (${currentUnifiedCount}${currentUnifiedCount >= 500 ? '+' : ''} Trucks)`;
+            }
+            openCheckout(tierName, currentUnifiedTotal, currentUnifiedCount);
+        }
+
+        // --- CHECKOUT MODAL LOGIC ---
+        const modal = document.getElementById('checkoutModal');
+        const checkoutTierName = document.getElementById('checkoutTierName');
+        const checkoutPrice = document.getElementById('checkoutPrice');
+        const checkoutSubmitBtn = document.getElementById('checkoutSubmitBtn');
+        const checkoutTrucks = document.getElementById('checkoutTrucks');
+        const errorBox = document.getElementById('checkoutErrorBox');
+        const errorMessage = document.getElementById('checkoutErrorMessage');
+        
+        let currentSelectedPrice = 0;
+        let currentTierName = '';
+
+        function openCheckout(tierName, price, forcedTruckCount = null) {
+            currentTierName = tierName;
+            currentSelectedPrice = price;
+            
+            checkoutTierName.innerText = tierName;
+            checkoutPrice.innerText = '£' + price.toLocaleString('en-GB');
+            checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-lock text-sm"></i> Proceed to Secure Payment (£' + price.toLocaleString('en-GB') + ')';
+            
+            errorBox.classList.add('hidden');
+            
+            // Set truck count based on selection
+            if(forcedTruckCount !== null) {
+                checkoutTrucks.value = forcedTruckCount;
+            } else if(tierName.includes('10 Trucks')) {
+                checkoutTrucks.value = 10;
+            } else if(tierName.includes('50 Trucks')) {
+                checkoutTrucks.value = 50;
+            } else {
+                checkoutTrucks.value = 1;
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCheckout() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+            errorBox.classList.add('hidden');
+        }
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            errorBox.classList.add('hidden');
+            
+            const name = document.getElementById('clientName').value;
+            const email = document.getElementById('clientEmail').value;
+            const company = document.getElementById('clientCompany').value;
+            
+            checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Connecting to Stripe...';
+            
+            let stripePaymentLink = "";
+            
+            // Replace these with your actual LIVE Stripe Payment Links before launch
+            if(currentSelectedPrice === 100) {
+                stripePaymentLink = ""; // e.g., "https://buy.stripe.com/YOUR_LINK_100"
+            } else if(currentSelectedPrice === 250) {
+                stripePaymentLink = ""; 
+            } else if(currentSelectedPrice === 750) {
+                stripePaymentLink = ""; 
+            } else if(currentSelectedPrice === 5000) {
+                stripePaymentLink = ""; 
+            } else if(currentSelectedPrice === 20000) {
+                stripePaymentLink = ""; 
+            }
+
+            setTimeout(() => {
+                if(stripePaymentLink !== "") {
+                    window.location.href = stripePaymentLink + "?prefilled_email=" + encodeURIComponent(email);
                 } else {
-                    trustScore = Math.min(100, trustScore + 0.05);
-                    document.getElementById('hazard-ring').classList.add('opacity-0');
+                    errorMessage.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> <span>Stripe integration pending. Cannot process £' + currentSelectedPrice.toLocaleString('en-GB') + ' tier for ' + name + ' yet.</span>';
+                    errorBox.classList.remove('hidden');
+                    
+                    // Reset button
+                    checkoutSubmitBtn.innerHTML = '<i class="fa-solid fa-lock text-sm"></i> Proceed to Secure Payment (£' + currentSelectedPrice.toLocaleString('en-GB') + ')';
                 }
-            }
-            updateUI();
-        }, 1000);
-
-        function updateUI() {
-            document.getElementById('speed-val').innerText = speed;
-            document.getElementById('trust-display').innerText = trustScore.toFixed(1) + '%';
-            document.getElementById('avg-speed-val').innerText = avgSpeed;
-            
-            // Sync with Admin View
-            document.getElementById('node-772-score').innerText = trustScore.toFixed(1) + '%';
-            const nodeStatus = document.getElementById('node-772-status');
-            const nodeIcon = document.getElementById('node-772-icon');
-            
-            if(isInsideZone && speed > targetSpeed + 2) {
-                nodeStatus.innerText = 'COMPLIANCE RISK - EXCEEDING';
-                nodeStatus.classList.replace('text-gray-500', 'text-red-500');
-                nodeIcon.classList.replace('bg-navblue/20', 'bg-red-500/20');
-                nodeIcon.classList.replace('text-navblue', 'text-red-500');
-            } else {
-                nodeStatus.innerText = isInsideZone ? 'ACTIVE - COMPLIANT' : 'STABLE - EN ROUTE';
-                nodeStatus.classList.replace('text-red-500', 'text-gray-500');
-                nodeIcon.classList.replace('bg-red-500/20', 'bg-navblue/20');
-                nodeIcon.classList.replace('text-red-500', 'text-navblue');
-            }
-
-            // Colors for Trust
-            const trustDisp = document.getElementById('trust-display');
-            if(trustScore < 90) trustDisp.className = 'text-3xl font-black text-navamber';
-            else if(trustScore < 80) trustDisp.className = 'text-3xl font-black text-red-500';
-            else trustDisp.className = 'text-3xl font-black text-navgreen';
+            }, 800);
         }
 
-        function addLog(msg, type) {
-            const container = document.getElementById('log-container');
-            const time = new Date().toLocaleTimeString('en-GB', { hour12: false });
-            const colorClass = type === 'warning' ? 'text-navamber' : type === 'success' ? 'text-navgreen' : 'text-navblue';
-            
-            const logEntry = document.createElement('div');
-            logEntry.className = 'flex gap-3 border-l border-white/5 pl-2';
-            logEntry.innerHTML = `
-                <span class="text-[8px] text-gray-700 mt-1">${time}</span>
-                <p class="text-[10px] font-black uppercase ${colorClass}">${msg}</p>
-            `;
-            
-            container.prepend(logEntry);
-            if(container.children.length > 6) container.lastChild.remove();
-        }
-
-        // Initial Log
-        addLog('LGP SYSTEM INITIALIZED', 'info');
-        addLog('AWAITING TELEMETRY...', 'info');
-
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeCheckout();
+        });
     </script>
 </body>
 </html>
